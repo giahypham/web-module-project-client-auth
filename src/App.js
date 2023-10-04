@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Routes, Link, Navigate} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link, Outlet} from 'react-router-dom';
 
 import Login from './components/Login';
 import FriendsList from './components/FriendsList';
@@ -37,14 +37,14 @@ function App() {
           <Route path='/friends/add'
             element={
               <PrivateRoute>
-                <AddFriends />
+                <AddFriends/>
               </PrivateRoute>
             } 
           /> 
           <Route path='/logout'
             element={
               <PrivateRoute>
-                <Logout />
+                <Logout/>
               </PrivateRoute>
             } 
           /> 

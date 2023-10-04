@@ -1,15 +1,18 @@
-import React from "react"
-import { Route, useNavigate } from 'react-router-dom'
+import React, {useEffect} from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const PrivateRoute = ({component: Component, ...rest}) => {
-    const navigate = useNavigate();
-    return <Route {...rest} render={(props)=> {
-        if (localStorage.getItem('token')){
-            return(<Component {...props} />)
-        } else {
-            return navigate('/login');
-        }
-    }}/>
-}
+const PrivateRoute = ({ children }) => {
+  const navigate = useNavigate();
+
+  useEffect(()=> {
+    if (!localStorage.getItem('token')) {
+        navigate('/login');
+      }
+  }, [])
+  return children;
+};
 
 export default PrivateRoute;
+
+
+
